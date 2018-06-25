@@ -37,8 +37,8 @@ public class CoreUserService {
 		query.setCode(userName);
 		query.setPassword(passwordEncryptService.password(password));
 		query.setState(GeneralStateEnum.ENABLE.getValue());
-		CoreUser user =userDao.createLambdaQuery().andEq(CoreUser::getCode,userName).
-		    andEq(CoreUser::getPassword, passwordEncryptService.password(password)).single();
+		CoreUser user =userDao.createLambdaQuery().andEq("code",userName).
+		    andEq("password", passwordEncryptService.password(password)).single();
 		if(user==null) {
 		    throw new PlatformException("用户"+userName+"不存在或者密码错误");
 		}

@@ -44,7 +44,7 @@ public class IndexController {
 	public ModelAndView login(String code, String password) {
 		UserLoginInfo info = userService.login(code, password);
 		if (info == null) {
-			throw new PlatformException("用户名密码错");
+			throw new PlatformException("用户名密码错误");
 		}
 		CoreUser user = info.getUser();
 		CoreOrg currentOrg = info.getOrgs().get(0);
